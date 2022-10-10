@@ -35,28 +35,9 @@ class User extends Authenticatable
         return false;
     }
 
-//    public function accounting()
-//    {
-//        return $this->hasOne(Accounting::class);
-//    }
-//
-//    public function cards()
-//    {
-//        return $this->hasMany(Card::class);
-//    }
-//
-//    public function orders()
-//    {
-//        return $this->hasMany(Order::class);
-//    }
-//
-//    public function payments()
-//    {
-//        return $this->hasMany(Payment::class);
-//    }
-//
-//    public function requests()
-//    {
-//        return $this->hasMany(Request::class);
-//    }
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class);
+    }
+
 }
