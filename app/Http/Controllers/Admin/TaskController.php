@@ -42,8 +42,12 @@ class TaskController extends Controller
 
     public function join(Task $task)
     {
-        $user = Auth::user()->id;
-//        $task->users->attach($user);
-        return $task->users;
+        try {
+            $user = Auth::user()->id;
+            $task->users()->attach($user);
+            return responseSuccess('', $task->users);
+        } catch (\Exception $exception) {
+            return responseServerError($exception);
+        }
     }
 }
