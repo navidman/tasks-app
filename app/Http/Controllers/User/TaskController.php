@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +20,7 @@ class TaskController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         try {
             DB::beginTransaction();

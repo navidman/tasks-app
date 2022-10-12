@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorize('admin');
+    }
+
     public function index()
     {
+
         try {
             $tasks = Task::all();
             return responseSuccess('', $tasks);
@@ -19,7 +25,7 @@ class TaskController extends Controller
         }
     }
 
-    public function update(Request $request, Task $task)
+    public function update(TaskRequest $request, Task $task)
     {
         try {
             $data = $request->input();
